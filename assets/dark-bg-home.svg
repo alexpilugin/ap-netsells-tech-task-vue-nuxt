@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Desktop" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1444 951" style="enable-background:new 0 0 1444 951;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#Rectangle_2_);}
+	.st1{fill:url(#Path-4_1_);stroke:#636363;stroke-opacity:0.618;}
+	.st2{fill:url(#Path-2_1_);stroke:#5E5E5E;stroke-width:2;}
+	.st3{opacity:0.3487;enable-background:new    ;}
+</style>
+<linearGradient id="Rectangle_2_" gradientUnits="userSpaceOnUse" x1="424.8849" y1="-55.0245" x2="423.999" y2="-55.571" gradientTransform="matrix(1441 0 0 -950 -610558 -52196)">
+	<stop  offset="0" style="stop-color:#000000"/>
+	<stop  offset="0.2264" style="stop-color:#636363"/>
+	<stop  offset="0.5958" style="stop-color:#505050"/>
+	<stop  offset="1" style="stop-color:#414141"/>
+</linearGradient>
+<rect id="Rectangle" class="st0" width="1444" height="951"/>
+<linearGradient id="Path-4_1_" gradientUnits="userSpaceOnUse" x1="423.8124" y1="-56.0426" x2="424.7795" y2="-55.7738" gradientTransform="matrix(1440.6204 0 0 -692.7328 -610397.625 -38046.3086)">
+	<stop  offset="0" style="stop-color:#060606"/>
+	<stop  offset="1" style="stop-color:#6E6E6E"/>
+</linearGradient>
+<path id="Path-4" class="st1" d="M1444,951c-0.1-371-0.1-602.1,0-693.5c-504.6,45.7-964.2,757.3-1443.4,336
+	C-0.2,616-0.2,735.1,0.6,951H1444z"/>
+<linearGradient id="Path-2_1_" gradientUnits="userSpaceOnUse" x1="423.6908" y1="-56.0705" x2="424.5092" y2="-56.1309" gradientTransform="matrix(1440.5349 0 0 -570.361 -610361.3125 -31315.8535)">
+	<stop  offset="0" style="stop-color:#4B4B4B"/>
+	<stop  offset="1" style="stop-color:#484848"/>
+</linearGradient>
+<path id="Path-2" class="st2" d="M0.5,381.4c189.5-29,1041,417.4,1443.5,241c-0.1,18.6-0.1,128.1,0,328.6H0.5
+	C-0.2,635.1-0.2,445.3,0.5,381.4z"/>
+<rect id="Rectangle_1_" class="st3" width="1444" height="951"/>
+</svg>

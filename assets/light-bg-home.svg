@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1444 951" style="enable-background:new 0 0 1444 951;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#Path-4_1_);stroke:#E8E8E8;}
+	.st1{fill:url(#Path-2_1_);stroke:#E4E4E4;}
+	.st2{opacity:0.2911;fill:#FFFFFF;enable-background:new    ;}
+</style>
+<g id="Group-3" transform="translate(-1.000000, 0.000000)">
+	
+		<linearGradient id="Path-4_1_" gradientUnits="userSpaceOnUse" x1="425.2944" y1="-55.9586" x2="425.8225" y2="-55.7443" gradientTransform="matrix(1440.6204 0 0 -692.7328 -611837.25 -38046.3086)">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="4.578857e-04" style="stop-color:#FFFFFF;stop-opacity:0"/>
+		<stop  offset="0.5215" style="stop-color:#E4E4E4;stop-opacity:0.8982"/>
+		<stop  offset="1" style="stop-color:#E1E1E1"/>
+	</linearGradient>
+	<path id="Path-4" class="st0" d="M1445,950c-0.1-370.6-0.1-601.5,0-692.7C940.4,302.9,480.8,1013.7,1.6,592.9
+		c-0.8,22.4-0.8,141.5,0,357.1H1445z"/>
+	
+		<linearGradient id="Path-2_1_" gradientUnits="userSpaceOnUse" x1="425.2337" y1="-56.0609" x2="424.6609" y2="-56.2927" gradientTransform="matrix(1440.5349 0 0 -570.361 -611800.875 -31315.8535)">
+		<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0.8042"/>
+		<stop  offset="1" style="stop-color:#D8D8D8"/>
+	</linearGradient>
+	<path id="Path-2" class="st1" d="M1.5,381C191,352,1042.5,798,1445,621.7c-0.1,18.5-0.1,128,0,328.3H1.5
+		C0.8,634.5,0.8,444.8,1.5,381z"/>
+	<rect id="Rectangle-Copy-2" x="1" class="st2" width="1444" height="951"/>
+</g>
+</svg>
