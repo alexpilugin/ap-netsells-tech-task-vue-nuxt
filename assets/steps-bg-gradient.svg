@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1440 900" style="enable-background:new 0 0 1440 900;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#Rectangle_2_);}
+	.st1{opacity:0.3487;enable-background:new    ;}
+</style>
+<g id="Rectangle-2" transform="translate(-1.000000, 0.000000)">
+	
+		<linearGradient id="Rectangle_2_" gradientUnits="userSpaceOnUse" x1="423.8837" y1="870.9068" x2="422.9992" y2="870.4171" gradientTransform="matrix(1441 0 0 -900 -609121 783929)">
+		<stop  offset="0" style="stop-color:#000000"/>
+		<stop  offset="0.2264" style="stop-color:#636363"/>
+		<stop  offset="0.5958" style="stop-color:#505050"/>
+		<stop  offset="1" style="stop-color:#414141"/>
+	</linearGradient>
+	<rect id="Rectangle" class="st0" width="1441" height="900"/>
+</g>
+<rect id="Rectangle_1_" x="1" class="st1" width="1440" height="900"/>
+</svg>

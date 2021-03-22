@@ -3,6 +3,10 @@
 @import "colours.scss";
 @import "fonts.scss";
 
+* {
+  box-sizing: border-box;
+}
+
 $color-pack: false;
 
 //all variable changes need to happen before @import vuetify

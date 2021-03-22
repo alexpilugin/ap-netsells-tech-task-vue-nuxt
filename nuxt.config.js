@@ -41,7 +41,8 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    { src: '~/plugins/vue-lazyload.js', ssr: false }
+    { src: '~/plugins/vue-lazyload.js', ssr: false },
+    { src: '~/plugins/mixins.js', ssr: false }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -80,7 +81,8 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    //baseURL: 'https://'
+    // POST End Point: https://recruitment-submissions.netsells.co.uk/api/vacancies/javascript-developer/submissions
+    baseURL: 'https://recruitment-submissions.netsells.co.uk/api'
   },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
@@ -93,9 +95,11 @@ export default {
         light: {
           roman: '#e05d5d', // brand red
           titled: '#464646',
+          greyed: '#A3A3A3',
+          /* Next colours are messy since is not clear "who is who" */
           primary: '#464646',
           secondary: '#424242',
-          accent: '#464646',
+          accent: '#A3A3A3',
           error: '#FF5252',
           info: '#2196F3',
           success: '#4CAF50',
@@ -104,13 +108,15 @@ export default {
         dark: {
           roman: '#e05d5d', // brand red
           titled: '#C0C0C0',
+          greyed: '#060505',
+          /* Next colours are messy since is not clear "who is who" */
           primary: '#D8D8D8',
           secondary: '#A3A3A3',
           accent: '#060505',
           error: '#FF5252',
           info: '#2196F3',
           success: '#4CAF50',
-          warning: '#FB8C00',
+          warning: '#FB8C00'
         },
       },
     },

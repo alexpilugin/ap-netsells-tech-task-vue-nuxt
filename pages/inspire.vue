@@ -15,6 +15,10 @@
 </template>
 
 <script>
+/* 
+  I live this page / route intentionally since
+  I used this page for testing layouts with background 
+*/
 export default {
   name: 'Inspire',
   layout: 'form',

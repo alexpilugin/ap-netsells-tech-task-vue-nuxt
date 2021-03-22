@@ -12,7 +12,7 @@
           depressed
           color="roman"
           class="begin-btn title"
-          @click.stop="navigate('/inspire')"
+          @click.stop="navigate('/steps')"
         >
           Begin
         </v-btn>
@@ -33,15 +33,6 @@ export default {
       if (this.$vuetify.breakpoint.smAndDown) cl = 'display-1'
       if (this.$vuetify.breakpoint.mdAndUp) cl = 'display-3'
       return cl
-    },
-  },
-  methods: {
-    navigate(route) {
-      const self = this
-      setTimeout(function () {
-        // give time for animation
-        self.$router.push({ path: route })
-      }, 300)
     },
   },
   head() {
