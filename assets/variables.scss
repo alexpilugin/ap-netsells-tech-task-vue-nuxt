@@ -1,4 +1,39 @@
 // Ref: https://github.com/nuxt-community/vuetify-module#customvariables
-//
-// The variables you want to modify
-// $font-size-root: 20px;
+
+@import "colours.scss";
+@import "fonts.scss";
+
+$color-pack: false;
+
+//all variable changes need to happen before @import vuetify
+
+
+html,
+body,
+.v-application {
+  font-family: $body-font-family;
+}
+//added all typography helper classes because of css specificity override
+//https://vuetifyjs.com/en/styles/typography#typography 
+.v-application {
+  .display-4,
+  .display-3,
+  .display-2,
+  .display-1,
+  .headline {
+    font-family: $heebo-font-family; 
+    font-weight: bold;
+  }
+  .title,
+  .subtitle-1,
+  .subtitle-2,
+  .body-1,
+  .body-2,
+  .caption,
+  .overline
+  {
+    font-family: $body-font-family;
+  }
+}
+
+@import '~vuetify/src/styles/settings/_variables.scss';

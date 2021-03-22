@@ -13,3 +13,23 @@
     </v-col>
   </v-row>
 </template>
+
+<script>
+export default {
+  name: 'Inspire',
+  layout: 'form',
+  transition: 'page',
+  head() {
+    return {
+      title: 'Inspire',
+      meta: [
+        {
+          hid: 'Netsells: Inspire page',
+          name: 'Inspire page',
+          content: 'Inspire page - Netsells',
+        },
+      ],
+    }
+  },
+}
+</script>

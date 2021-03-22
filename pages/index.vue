@@ -1,93 +1,74 @@
 <template>
-  <v-row justify="center" align="center">
+  <v-row justify="center" align="center" class="landing-page">
     <v-col cols="12" sm="8" md="6">
-      <div class="text-center">
-        <Logo />
-        <VuetifyLogo />
+      <div class="text-center welcome-box">
+        <h2 class="title roman-red-text mb-5">Welcome</h2>
+        <h1 :class="headerClass" color="primary">
+          We’re excited to see what you can do!
+        </h1>
+        <v-spacer />
+        <v-btn
+          dark
+          depressed
+          color="roman"
+          class="begin-btn title"
+          @click.stop="navigate('/inspire')"
+        >
+          Begin
+        </v-btn>
       </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation </a
-            >.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br />
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire"> Continue </v-btn>
-        </v-card-actions>
-      </v-card>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
-
 export default {
-  components: {
-    Logo,
-    VuetifyLogo,
+  name: 'Index',
+  layout: 'welcome',
+  transition: 'page',
+  computed: {
+    headerClass() {
+      let cl = 'display-3'
+      // :class="{'display-3': $vuetify.breakpoint. smAndDown, 'display-1': $vuetify.breakpoint. mdAndUp}"
+      if (this.$vuetify.breakpoint.smAndDown) cl = 'display-1'
+      if (this.$vuetify.breakpoint.mdAndUp) cl = 'display-3'
+      return cl
+    },
+  },
+  methods: {
+    navigate(route) {
+      const self = this
+      setTimeout(function () {
+        // give time for animation
+        self.$router.push({ path: route })
+      }, 300)
+    },
+  },
+  head() {
+    return {
+      title: 'Welcome screen',
+      meta: [
+        {
+          hid: 'Netsells: Welcome screen',
+          name: 'Welcome screen',
+          content: 'Home page - Netsells: Welcome screen',
+        },
+      ],
+    }
   },
 }
 </script>
+
+<style lang="scss" scopped>
+.landing-page {
+  .welcome-box {
+    padding-bottom: 140px;
+
+    .begin-btn {
+      padding: 32px 46px !important;
+      margin-top: 90px;
+      border-radius: 0px;
+    }
+  }
+}
+</style>

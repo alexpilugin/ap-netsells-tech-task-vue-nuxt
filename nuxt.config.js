@@ -6,7 +6,7 @@ export default {
   vue: {
     config: {
       productionTip: false,
-      devtools: false
+      devtools: true
     }
   },
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -18,7 +18,10 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&family=Montserrat&family=Oswald&display=swap" }
+    ],
   },
 
   //Customize the progress-bar color
@@ -49,11 +52,9 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify',
+    ['@nuxtjs/vuetify', { treeShake: true }],
     // https://go.nuxtjs.dev/eslint
-    ['@nuxtjs/eslint-module', {
-      fix: true
-    }],
+    ['@nuxtjs/eslint-module', { fix: true }],
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -90,18 +91,22 @@ export default {
       default: 'light',
       themes: {
         light: {
+          roman: '#e05d5d', // brand red
+          titled: '#464646',
           primary: '#464646',
           secondary: '#424242',
-          accent: '#E05D5D',
+          accent: '#464646',
           error: '#FF5252',
           info: '#2196F3',
           success: '#4CAF50',
           warning: '#FB8C00',
         },
         dark: {
-          primary: '#2B2B2B',
+          roman: '#e05d5d', // brand red
+          titled: '#C0C0C0',
+          primary: '#D8D8D8',
           secondary: '#A3A3A3',
-          accent: '#E05D5D',
+          accent: '#060505',
           error: '#FF5252',
           info: '#2196F3',
           success: '#4CAF50',
@@ -117,6 +122,7 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    analyze: true,
     extractCSS: true,
     buildDir: '.nuxt',
     publicPath: '/assets/',
