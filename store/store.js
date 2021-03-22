@@ -1,46 +1,30 @@
 /* eslint-disable semi */
-const devMode = process.env.NODE_ENV === 'development'
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-// Event names:
-export const EVENTS = {
-  TOGGLE_DARK_THEME: 'TOGGLE_DARK_THEME',
-  SET_THEME: 'SET_THEME',
-}
+import states from './states.js'
+import getters from './getters.js'
+import mutations from './mutations.js'
+import actions from './actions.js'
+Vue.use(Vuex)
 
-export const state = () => ({
-  isDarkTheme: false,
+/*
+// Issue: https://github.com/vuejs/vuex/issues/1748
+
+export default new Vuex.Store({
+  // use strict mode in the dev environment only:
+  strict: process.env.NODE_ENV !== 'production',
+
+  state: states,
+  getters,
+  mutations,
+  actions,
 })
+*/
 
-export const getters = {
-  isDarkThemeInUse: (state) => state.isDarkTheme,
-}
-
-export const mutations = {
-  [EVENTS.TOGGLE_DARK_THEME]: (state) => {
-    state.isDarkTheme = !state.isDarkTheme
-    if (devMode) {
-      console.log(
-        '[TOGGLE_DARK_THEME] mutation: darkTheme: ' + state.isDarkTheme
-      )
-    }
-  },
-  [EVENTS.SET_THEME]: (state, mode) => {
-    state.isDarkTheme = mode
-    if (devMode) {
-      console.log('[SET_THEME] mutation: isDarkTheme: ' + state.isDarkTheme)
-    }
-  },
-}
-
-export const actions = {
-  toggleDarkTheme: ({ commit }) => {
-    if (devMode) {
-      console.log('Action: store/toggleDarkTheme')
-    }
-    commit(EVENTS.TOGGLE_DARK_THEME, null)
-  },
-  setTheme: ({ commit }, mode) => {
-    if (devMode) console.log('Action: store/setTheme')
-    commit(EVENTS.SET_THEME, mode)
-  },
+export default {
+  state: states,
+  getters,
+  mutations,
+  actions,
 }
