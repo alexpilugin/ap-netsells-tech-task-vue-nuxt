@@ -6,6 +6,8 @@ const states = () => ({
       '^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]?[ ]{1}[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$',
     validGBphoneNumberRegExp: '^(?:0|\\+?44)(?:\\d\\s?){9,10}$',
     validName: '^[a-zA-Z ]+$',
+    githubUserRegex:
+      'https?://(www.)?[-a-zA-Z0-9@:%._+~#=]{1,256}.[a-zA-Z0-9()]',
   },
   isDarkTheme: false,
   steps: [

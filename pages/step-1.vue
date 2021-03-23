@@ -19,8 +19,10 @@
         <div class="form-fields text-end">
           <InputText
             :value="answer.firstName"
+            :error-msg="error.firstNameError"
             label="First Name"
             name="first-name"
+            uppercase
             required
             @input="onChangeFirstName($event)"
           />
@@ -28,10 +30,12 @@
             :value="answer.secondName"
             label="Second Name"
             name="second-name"
+            uppercase
             @input="onChangeSecondName($event)"
           />
           <InputText
             :value="answer.email"
+            :error-msg="error.emailError"
             label="Email"
             name="email"
             required
@@ -61,7 +65,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'StepOne',
@@ -74,10 +78,15 @@ export default {
   data() {
     return {
       answer: {
-        firstName: '',
+        firstName: '', // required
         secondName: '',
-        email: '',
+        email: '', // required
         phoneNumber: '',
+        isValid: false,
+      },
+      error: {
+        firstNameError: '',
+        emailError: '',
       },
     }
   },
@@ -86,22 +95,46 @@ export default {
       steps: (state) => state.store.steps,
       isDarkTheme: (state) => state.store.isDarkTheme,
     }),
+    ...mapGetters({
+      getEmailRegex: 'store/getEmailRegex',
+      getNameRegex: 'store/getNameRegex',
+    }),
   },
   methods: {
+    ...mapActions({
+      setFirstName: 'store/setFirstName',
+      setEmail: 'store/setEmail',
+    }),
     onChangeFirstName(value) {
-      console.log('First Name:', value, this.answer.firstName)
+      this.error.firstNameError = ''
+      this.answer.firstName = value
     },
     onChangeSecondName(value) {
-      console.log('Second Name:', value, this.answer.secondName)
+      this.answer.secondName = value
     },
     onChangeEmail(value) {
-      console.log('Email:', value, this.answer.email)
+      this.error.emailError = ''
+      this.answer.email = value
     },
     onChangePhoneNumber(value) {
-      console.log('Phone Number:', value, this.answer.phoneNumber)
+      this.answer.phoneNumber = value
     },
     onNext() {
-      console.log('Clicked on the Next btn')
+      const firstName = this.answer.firstName
+      const namePattern = this.getNameRegex
+      const validName = this.isValid(firstName, namePattern)
+      this.error.firstNameError = validName ? '' : 'Correct First Name Required'
+
+      const email = this.answer.email
+      const emailPattern = this.getEmailRegex
+      const validEmal = this.isValid(email, emailPattern)
+      this.error.emailError = validEmal ? '' : 'Correct Email Address Required'
+
+      if (this.error.firstNameError || this.error.emailError) return
+
+      this.setFirstName(firstName) // save in Vuex
+      this.setEmail(email) // save in Vuex
+      this.navigate('/step-2')
     },
   },
   head() {

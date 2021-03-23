@@ -92,7 +92,7 @@ export default {
       const files = e.target.files
       for (let i = 0; i < files.length; i++) {
         DOCS.files.push(files[i])
-        DOCS.urls.push(URL.createObjectURL(files[i])) // window.URL
+        DOCS.urls.push(URL.createObjectURL(files[i])) // URL == window.URL
         DOCS.base64Data.push(null) // or {}
 
         const fname =

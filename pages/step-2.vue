@@ -23,7 +23,8 @@
             label="Do you live in the UK?"
             name="live-in-uk"
             required
-            error-msg="Yes or No?"
+            uppercase
+            :error-msg="error.liveInUK"
             @input="onChangeLiveInUK($event)"
           />
           <InputText
@@ -31,6 +32,7 @@
             label="Your Github Profile"
             name="github-profile"
             required
+            :error-msg="error.github"
             @input="onChangeGithub($event)"
           />
           <!-- 
@@ -46,6 +48,7 @@
             name="about"
             textarea
             required
+            :error-msg="error.about"
             @input="onChangeAbout($event)"
           />
           <div class="float-right">
@@ -66,7 +69,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'StepTwo',
@@ -81,8 +84,12 @@ export default {
       answer: {
         liveInUK: '',
         github: '',
-        email: '',
-        phoneNumber: '',
+        about: '',
+      },
+      error: {
+        liveInUK: '',
+        github: '',
+        about: '',
       },
     }
   },
@@ -90,19 +97,50 @@ export default {
     ...mapState({
       isDarkTheme: (state) => state.store.isDarkTheme,
     }),
+    ...mapGetters({
+      githubRegex: 'store/githubRegex',
+      getNameRegex: 'store/getNameRegex',
+    }),
   },
   methods: {
+    ...mapActions({
+      setLiveUK: 'store/setLiveUK',
+      setGithub: 'store/setGithub',
+      setAboutYou: 'store/setAboutYou',
+    }),
     onNext() {
-      console.log('clicked on the Next button')
+      const liveInUK = this.answer.liveInUK
+      const validliveInUK = !!(liveInUK === 'YES' || liveInUK === 'NO')
+      this.error.liveInUK = validliveInUK ? '' : "It sould be 'YES' or 'NO'"
+
+      const github = this.answer.github
+      const githubRegex = this.githubRegex
+      const validGithub = this.isValid(github, githubRegex)
+      this.error.github = validGithub ? '' : 'Correct linkt to Github required'
+
+      const about = this.answer.about
+      const namePattern = this.getNameRegex
+      const validAbout = this.isValid(about, namePattern)
+      this.error.about = validAbout ? '' : 'Required'
+
+      if (this.error.liveInUK || this.error.github || this.error.about) return
+
+      this.setLiveUK(liveInUK) // save in Vuex
+      this.setGithub(github) // save in Vuex
+      this.setAboutYou(about) // save in Vuex
+      this.navigate('/step-3')
     },
     onChangeLiveInUK(value) {
-      console.log('Live In UK:', value, this.answer.liveInUK)
+      this.answer.liveInUK = value
+      this.error.liveInUK = ''
     },
     onChangeGithub(value) {
-      console.log('Github:', value, this.answer.github)
+      this.answer.github = value
+      this.error.github = ''
     },
     onChangeAbout(value) {
-      console.log('About:', value, this.answer.github)
+      this.answer.about = value
+      this.error.about = ''
     },
   },
   head() {
