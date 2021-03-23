@@ -18,7 +18,11 @@
     <v-row justify="center" align="center">
       <v-col cols="12" sm="6">
         <div class="form-fields text-end">
-          <FileDropZone refname="cv-load" @loaded="onLoadedCV">
+          <FileDropZone
+            refname="cv-load"
+            :error-msg="errorMsgCV"
+            @loaded="onLoadedCV"
+          >
             <div v-if="!isLoadedCV">
               <v-icon>mdi-file</v-icon><span color="roman">*</span>
               <p class="title">Upload Your CV</p>
@@ -77,7 +81,10 @@ export default {
       isLoadedCV: false,
       isLoadedCL: false,
       filenameCV: '',
+      fileCV: null,
       filenameCL: '',
+      fileCL: null,
+      errorMsgCV: '',
     }
   },
   computed: {
@@ -87,16 +94,27 @@ export default {
   },
   methods: {
     onNext() {
-      console.log('clicked on the Next button')
+      this.errorMsgCV = this.filenameCV !== '' ? '' : 'Required'
+
+      if (this.errorMsgCV) return
+
+      const formData = new FormData()
+      formData.append('cv', this.fileCV)
+      console.log(formData)
+      // ...after sending ... .then(...)
+      this.navigate('/confirmation')
     },
-    onLoadedCV(filename) {
+    onLoadedCV({ filename, file }) {
       console.log('onLoadedCV: ', filename)
       this.filenameCV = filename
+      this.fileCV = file
       this.isLoadedCV = true
+      this.errorMsgCV = ''
     },
-    onLoadedCL(filename) {
+    onLoadedCL({ filename, file }) {
       console.log('onLoadedCL: ', filename)
       this.filenameCL = filename
+      this.fileCL = file
       this.isLoadedCL = true
     },
   },

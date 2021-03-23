@@ -20,6 +20,7 @@
         @change.prevent="loadFilesFromDialog"
       />
     </div>
+    <label v-show="!!errorMsg" class="error-msg">{{ errorMsg }}</label>
   </div>
 </template>
 
@@ -38,6 +39,10 @@ export default {
     multiple: {
       type: Boolean,
       default: false,
+    },
+    errorMsg: {
+      type: String,
+      default: '',
     },
   },
   data() {
@@ -97,7 +102,7 @@ export default {
 
         const fname =
           files[i].length > 0 ? files[i].name.substring(0, 20) : files[i].name
-        this.$emit('loaded', fname) // <--------- send a msg
+        this.$emit('loaded', { filename: fname, file: files[i] }) // <--------- send a msg
         console.log('EMIT: loaded from Dialog', fname)
       }
       this.refreshData()
@@ -112,7 +117,7 @@ export default {
 
         const fname =
           files[i].length > 0 ? files[i].name.substring(0, 20) : files[i].name
-        this.$emit('loaded', fname) // <--------- send a msg
+        this.$emit('loaded', { filename: fname, file: files[i] }) // <--------- send a msg
         console.log('EMIT: loaded files: ', fname)
       }
       this.refreshData()
@@ -164,6 +169,15 @@ export default {
       text-align: center;
       vertical-align: middle;
     }
+  }
+
+  .error-msg {
+    color: $color-brand-red;
+    width: 100%;
+    text-align: left;
+    margin: 5px 0;
+    font-size: 1rem !important;
+    padding: 0px !important;
   }
 }
 .theme--dark {
