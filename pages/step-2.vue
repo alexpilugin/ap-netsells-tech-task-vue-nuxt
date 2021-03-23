@@ -92,6 +92,9 @@ export default {
     }),
   },
   methods: {
+    onNext() {
+      console.log('clicked on the Next button')
+    },
     onChangeLiveInUK(value) {
       console.log('Live In UK:', value, this.answer.liveInUK)
     },
@@ -129,6 +132,13 @@ export default {
       .v-slider__track-background {
         border-radius: 3px;
       }
+    }
+  }
+  .form-fields {
+    .next-btn {
+      padding: 32px 46px !important;
+      margin-top: 90px;
+      border-radius: 0px;
     }
   }
 }

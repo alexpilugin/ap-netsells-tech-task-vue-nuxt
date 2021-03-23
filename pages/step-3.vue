@@ -14,6 +14,49 @@
         </div>
       </v-col>
     </v-row>
+
+    <v-row justify="center" align="center">
+      <v-col cols="12" sm="6">
+        <div class="form-fields text-end">
+          <FileDropZone refname="cv-load" @loaded="onLoadedCV">
+            <div v-if="!isLoadedCV">
+              <v-icon>mdi-file</v-icon><span color="roman">*</span>
+              <p class="title">Upload Your CV</p>
+              <p>Drag and drop or Upload your CV file here</p>
+            </div>
+            <div v-else>
+              <v-icon color="roman">mdi-file</v-icon>
+              <p class="title">{{ filenameCV }}</p>
+              <p>Reupload a new file here</p>
+            </div>
+          </FileDropZone>
+          <FileDropZone refname="cv-cover-letter" @loaded="onLoadedCL">
+            <div v-if="!isLoadedCL">
+              <v-icon>mdi-file</v-icon>
+              <p class="title">Upload Your Cover Letter</p>
+              <p>Drag and drop or Upload your Cover Letter file here</p>
+            </div>
+            <div v-else>
+              <v-icon color="roman">mdi-file</v-icon>
+              <p class="title">{{ filenameCL }}</p>
+              <p>Reupload a new file here</p>
+            </div>
+          </FileDropZone>
+
+          <div class="float-right">
+            <v-btn
+              dark
+              depressed
+              color="roman"
+              class="next-btn title"
+              @click.stop="onNext()"
+            >
+              Next
+            </v-btn>
+          </div>
+        </div>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -26,16 +69,36 @@ export default {
   transition: 'page',
   components: {
     StepIndicators: () => import('~/components/StepIndicators.vue'),
+    FileDropZone: () => import('~/components/FileDropZone.vue'),
   },
   data() {
     return {
       sliderVal: 5,
+      isLoadedCV: false,
+      isLoadedCL: false,
+      filenameCV: '',
+      filenameCL: '',
     }
   },
   computed: {
     ...mapState({
       isDarkTheme: (state) => state.store.isDarkTheme,
     }),
+  },
+  methods: {
+    onNext() {
+      console.log('clicked on the Next button')
+    },
+    onLoadedCV(filename) {
+      console.log('onLoadedCV: ', filename)
+      this.filenameCV = filename
+      this.isLoadedCV = true
+    },
+    onLoadedCL(filename) {
+      console.log('onLoadedCL: ', filename)
+      this.filenameCL = filename
+      this.isLoadedCL = true
+    },
   },
   head() {
     return {
@@ -64,6 +127,13 @@ export default {
       .v-slider__track-background {
         border-radius: 3px;
       }
+    }
+  }
+  .form-fields {
+    .next-btn {
+      padding: 32px 46px !important;
+      margin-top: 90px;
+      border-radius: 0px;
     }
   }
 }
