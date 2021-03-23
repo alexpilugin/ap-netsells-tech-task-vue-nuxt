@@ -1,49 +1,55 @@
 <template>
-  <v-card height="100%" class="app-step-card" elevation="0">
-    <v-layout>
-      <v-row>
-        <v-col cols="12" class="pad-x pad-y">
-          <v-slider
-            :v-model="info.sliderVal"
-            label=""
-            color="roman"
-            :track-color="isDarkTheme ? '#060505' : '#E3E3E3'"
-            :min="0"
-            :max="10"
-            step="1"
-            readonly
-          ></v-slider>
-        </v-col>
-      </v-row>
-    </v-layout>
-    <v-card-title class="text-left pad-x mt-0">
-      <v-layout class="mt-0">
+  <v-hover v-slot:default="{ hover }">
+    <v-card
+      height="100%"
+      :class="hover ? 'app-step-card m-over' : 'app-step-card'"
+      elevation="0"
+    >
+      <v-layout>
         <v-row>
-          <v-col cols="12">
-            <h2 class="subtitle-1 text-uppercase mb-3 mt-0">
-              Step {{ index + 1 }}
-            </h2>
-            <h1 class="headline" v-html="info.title"></h1>
+          <v-col cols="12" class="pad-x pad-y">
+            <v-slider
+              :v-model="info.sliderVal"
+              label=""
+              color="roman"
+              :track-color="isDarkTheme ? '#060505' : '#E3E3E3'"
+              :min="0"
+              :max="10"
+              step="1"
+              readonly
+            ></v-slider>
           </v-col>
         </v-row>
       </v-layout>
-    </v-card-title>
-    <v-card-text class="text-left pad-x">
-      <p>{{ info.subtitle }}</p>
-    </v-card-text>
-    <v-card-actions class="card-actions pa-0 ma-0">
-      <v-btn
-        block
-        elevation="0"
-        class="btn-complete"
-        :color="isDarkTheme ? '#464646' : '#E3E3E3'"
-        @click.stop="navigate(`/step-${index + 1}`)"
-      >
-        Complete
-        <v-icon right>mdi-ray-start-arrow</v-icon>
-      </v-btn>
-    </v-card-actions>
-  </v-card>
+      <v-card-title class="text-left pad-x mt-0">
+        <v-layout class="mt-0">
+          <v-row>
+            <v-col cols="12">
+              <h2 class="subtitle-1 text-uppercase mb-3 mt-0">
+                Step {{ index + 1 }}
+              </h2>
+              <h1 class="headline" v-html="info.title"></h1>
+            </v-col>
+          </v-row>
+        </v-layout>
+      </v-card-title>
+      <v-card-text class="text-left pad-x">
+        <p>{{ info.subtitle }}</p>
+      </v-card-text>
+      <v-card-actions class="card-actions pa-0 ma-0">
+        <v-btn
+          block
+          elevation="0"
+          class="btn-complete"
+          :color="isDarkTheme ? '#464646' : '#E3E3E3'"
+          @click.stop="navigate(`/step-${index + 1}`)"
+        >
+          Complete
+          <v-icon right>mdi-ray-start-arrow</v-icon>
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-hover>
 </template>
 
 <script>
@@ -67,6 +73,11 @@ export default {
   position: relative;
   margin: 0 30px;
   padding-bottom: 50px;
+
+  &.m-over {
+    border: solid 1px $color-brand-red !important;
+  }
+
   .v-slider--horizontal {
     .v-slider__track-container {
       height: 6px;
@@ -80,8 +91,8 @@ export default {
   }
   .btn-complete {
     border-radius: 0px !important;
-    padding: 30px 0;
-    margin: 0;
+    padding: 30px 0 !important;
+    margin: 0 !important;
     margin-bottom: 1px !important;
   }
   .pad-x {

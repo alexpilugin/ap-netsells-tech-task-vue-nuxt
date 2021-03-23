@@ -1,40 +1,6 @@
 <template>
   <v-container lass="step-one-page">
-    <v-row justify="center" align="center">
-      <v-col
-        v-for="(step, index) in steps"
-        :key="index"
-        cols="12"
-        sm="6"
-        md="4"
-      >
-        <v-hover v-slot:default="{ hover }">
-          <v-card
-            :class="hover ? 'card-indicator m-over' : 'card-indicator'"
-            elevation="0"
-            @click.stop="navigate('/step-2')"
-          >
-            <v-card-title class="pad-x mt-0">
-              <h2 class="text-center subtitle-1 text-uppercase mb-3 mt-0">
-                Step {{ index + 1 }}
-              </h2>
-            </v-card-title>
-            <v-card-text>
-              <v-slider
-                :v-model="step.sliderVal"
-                label=""
-                color="roman"
-                :track-color="isDarkTheme ? '#060505' : '#E3E3E3'"
-                :min="0"
-                :max="10"
-                step="1"
-                readonly
-              ></v-slider>
-            </v-card-text>
-          </v-card>
-        </v-hover>
-      </v-col>
-    </v-row>
+    <StepIndicators :selected="1" />
 
     <v-row justify="center" align="center">
       <v-col cols="12">
@@ -47,6 +13,50 @@
         </div>
       </v-col>
     </v-row>
+
+    <v-row justify="center" align="center">
+      <v-col cols="12" sm="6">
+        <div class="form-fields text-end">
+          <InputText
+            :value="answer.firstName"
+            label="First Name"
+            name="first-name"
+            required
+            @input="onChangeFirstName($event)"
+          />
+          <InputText
+            :value="answer.secondName"
+            label="Second Name"
+            name="second-name"
+            @input="onChangeSecondName($event)"
+          />
+          <InputText
+            :value="answer.email"
+            label="Email"
+            name="email"
+            required
+            @input="onChangeEmail($event)"
+          />
+          <InputText
+            :value="answer.phoneNumber"
+            label="Phone Number"
+            name="phone-number"
+            @input="onChangePhoneNumber($event)"
+          />
+          <div class="float-right">
+            <v-btn
+              dark
+              depressed
+              color="roman"
+              class="next-btn title"
+              @click.stop="onNext()"
+            >
+              Next
+            </v-btn>
+          </div>
+        </div>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -54,14 +64,45 @@
 import { mapState } from 'vuex'
 
 export default {
-  name: 'StepsOne',
+  name: 'StepOne',
   layout: 'form',
   transition: 'page',
+  components: {
+    InputText: () => import('~/components/InputText.vue'),
+    StepIndicators: () => import('~/components/StepIndicators.vue'),
+  },
+  data() {
+    return {
+      answer: {
+        firstName: '',
+        secondName: '',
+        email: '',
+        phoneNumber: '',
+      },
+    }
+  },
   computed: {
     ...mapState({
       steps: (state) => state.store.steps,
       isDarkTheme: (state) => state.store.isDarkTheme,
     }),
+  },
+  methods: {
+    onChangeFirstName(value) {
+      console.log('First Name:', value, this.answer.firstName)
+    },
+    onChangeSecondName(value) {
+      console.log('Second Name:', value, this.answer.secondName)
+    },
+    onChangeEmail(value) {
+      console.log('Email:', value, this.answer.email)
+    },
+    onChangePhoneNumber(value) {
+      console.log('Phone Number:', value, this.answer.phoneNumber)
+    },
+    onNext() {
+      console.log('Clicked on the Next btn')
+    },
   },
   head() {
     return {
@@ -80,20 +121,11 @@ export default {
 
 <style lang="scss" scopped>
 .step-one-page {
-  .card-indicator {
-    height: 88px;
-    cursor: pointer !important;
-    &.m-over {
-      border: solid 1px $color-brand-red !important;
-    }
-
-    .v-slider--horizontal {
-      .v-slider__track-container {
-        height: 6px;
-        .v-slider__track-background {
-          border-radius: 3px;
-        }
-      }
+  .form-fields {
+    .next-btn {
+      padding: 32px 46px !important;
+      margin-top: 90px;
+      border-radius: 0px;
     }
   }
 }

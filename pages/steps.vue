@@ -30,14 +30,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import AppStepCard from '~/components/ApplicationStepsCard.vue'
 
 export default {
   name: 'Steps',
   layout: 'form',
   transition: 'page',
   components: {
-    AppStepCard,
+    AppStepCard: () => import('~/components/ApplicationStepsCard.vue'),
   },
   computed: {
     ...mapState({

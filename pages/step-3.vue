@@ -1,21 +1,7 @@
 <template>
   <v-container lass="step-three-page">
-    <v-row justify="center" align="center">
-      <v-col cols="12">
-        <v-card class="card-indicator" elevation="0">
-          <v-slider
-            :v-model="sliderVal"
-            label=""
-            color="roman"
-            :track-color="isDarkTheme ? '#060505' : '#E3E3E3'"
-            :min="0"
-            :max="10"
-            step="1"
-            readonly
-          ></v-slider>
-        </v-card>
-      </v-col>
-    </v-row>
+    <StepIndicators :selected="3" />
+
     <v-row justify="center" align="center">
       <v-col cols="12">
         <div class="text-center">
@@ -35,9 +21,12 @@
 import { mapState } from 'vuex'
 
 export default {
-  name: 'StepsOne',
+  name: 'StepThree',
   layout: 'form',
   transition: 'page',
+  components: {
+    StepIndicators: () => import('~/components/StepIndicators.vue'),
+  },
   data() {
     return {
       sliderVal: 5,

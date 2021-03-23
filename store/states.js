@@ -1,4 +1,12 @@
 const states = () => ({
+  config: {
+    validEmailRegExp:
+      '^(([^<>()[\\]\\\\.,;:\\s@"]+(\\.[^<>()[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$',
+    validPostcodeRegExp:
+      '^([A-Za-z][A-Ha-hJ-Yj-y]?[0-9][A-Za-z0-9]?[ ]{1}[0-9][A-Za-z]{2}|[Gg][Ii][Rr] ?0[Aa]{2})$',
+    validGBphoneNumberRegExp: '^(?:0|\\+?44)(?:\\d\\s?){9,10}$',
+    validName: '^[a-zA-Z ]+$',
+  },
   isDarkTheme: false,
   steps: [
     {

@@ -8,5 +8,9 @@ Vue.mixin({
         self.$router.push({ path: route })
       }, 300)
     },
+    isValid(text, pattern) {
+      const regex = new RegExp(pattern)
+      return regex.test(text)
+    },
   },
 })

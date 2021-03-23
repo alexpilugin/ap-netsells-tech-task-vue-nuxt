@@ -3,9 +3,6 @@
 @import "colours.scss";
 @import "fonts.scss";
 
-* {
-  box-sizing: border-box;
-}
 
 $color-pack: false;
 
@@ -38,6 +35,14 @@ body,
   {
     font-family: $body-font-family;
   }
+}
+
+textarea:focus, 
+input:focus {
+  outline: none;
+}
+*:focus {
+  outline: none;
 }
 
 @import '~vuetify/src/styles/settings/_variables.scss';

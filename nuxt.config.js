@@ -24,8 +24,8 @@ export default {
     ],
   },
 
-  //Customize the progress-bar color
-  loading: { color: '#fff' },
+  //Customize the progress-bar color 
+  loading: { color: '#E05D5D' }, // Brand Red
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
@@ -96,6 +96,7 @@ export default {
           roman: '#e05d5d', // brand red
           titled: '#464646',
           greyed: '#A3A3A3',
+          inputborder: '#D4D4D4',
           /* Next colours are messy since is not clear "who is who" */
           primary: '#464646',
           secondary: '#424242',
@@ -109,6 +110,7 @@ export default {
           roman: '#e05d5d', // brand red
           titled: '#C0C0C0',
           greyed: '#060505',
+          inputborder: '#4A4A4A',
           /* Next colours are messy since is not clear "who is who" */
           primary: '#D8D8D8',
           secondary: '#A3A3A3',
@@ -121,11 +123,18 @@ export default {
       },
     },
   },
+
+  /* Page Transitions */
   pageTransition: {
-    name: "page", //css class: '~assets/styles/main.css'
+    name: "page", //css class: '~assets/styles/page-transition.css'
     mode: "out-in"
   },
-
+  /* Layout Transitions */
+  layoutTransition: {
+    name: "page", //css class: '~assets/styles/page-transition.css'
+    mode: "out-in"
+  },
+    
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     analyze: true,

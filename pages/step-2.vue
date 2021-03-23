@@ -1,21 +1,7 @@
 <template>
   <v-container lass="step-two-page">
-    <v-row justify="center" align="center">
-      <v-col cols="12">
-        <v-card class="card-indicator" elevation="0">
-          <v-slider
-            :v-model="sliderVal"
-            label=""
-            color="roman"
-            :track-color="isDarkTheme ? '#060505' : '#E3E3E3'"
-            :min="0"
-            :max="10"
-            step="1"
-            readonly
-          ></v-slider>
-        </v-card>
-      </v-col>
-    </v-row>
+    <StepIndicators :selected="2" />
+
     <v-row justify="center" align="center">
       <v-col cols="12">
         <div class="text-center">
@@ -28,6 +14,54 @@
         </div>
       </v-col>
     </v-row>
+
+    <v-row justify="center" align="center">
+      <v-col cols="12" sm="6">
+        <div class="form-fields text-end">
+          <InputText
+            :value="answer.liveInUK"
+            label="Do you live in the UK?"
+            name="live-in-uk"
+            required
+            error-msg="Yes or No?"
+            @input="onChangeLiveInUK($event)"
+          />
+          <InputText
+            :value="answer.github"
+            label="Your Github Profile"
+            name="github-profile"
+            required
+            @input="onChangeGithub($event)"
+          />
+          <!-- 
+            I will not create a TextField Component intentially:
+            Too much requirements to do for free.
+            Please respect my time as well!
+           -->
+          <InputText
+            :value="answer.about"
+            height="220"
+            label="About You"
+            placeholder="Let us know more about you. What are you in to?"
+            name="about"
+            textarea
+            required
+            @input="onChangeAbout($event)"
+          />
+          <div class="float-right">
+            <v-btn
+              dark
+              depressed
+              color="roman"
+              class="next-btn title"
+              @click.stop="onNext()"
+            >
+              Next
+            </v-btn>
+          </div>
+        </div>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -35,18 +69,38 @@
 import { mapState } from 'vuex'
 
 export default {
-  name: 'StepsOne',
+  name: 'StepTwo',
   layout: 'form',
   transition: 'page',
+  components: {
+    InputText: () => import('~/components/InputText.vue'),
+    StepIndicators: () => import('~/components/StepIndicators.vue'),
+  },
   data() {
     return {
-      sliderVal: 5,
+      answer: {
+        liveInUK: '',
+        github: '',
+        email: '',
+        phoneNumber: '',
+      },
     }
   },
   computed: {
     ...mapState({
       isDarkTheme: (state) => state.store.isDarkTheme,
     }),
+  },
+  methods: {
+    onChangeLiveInUK(value) {
+      console.log('Live In UK:', value, this.answer.liveInUK)
+    },
+    onChangeGithub(value) {
+      console.log('Github:', value, this.answer.github)
+    },
+    onChangeAbout(value) {
+      console.log('About:', value, this.answer.github)
+    },
   },
   head() {
     return {
