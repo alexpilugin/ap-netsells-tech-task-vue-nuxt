@@ -1,5 +1,14 @@
 # ap-netsells-task
 
+## Licence
+
+[https://choosealicense.com/no-permission/](https://choosealicense.com/no-permission/)
+
+>When you make a creative work (which includes code), the work is under exclusive copyright by default. Unless you include a license that specifies otherwise, nobody else can copy, distribute, or modify your work without being at risk of take-downs, shake-downs, or litigation.
+
+>If a repository has no license, then all rights are reserved and it is not Open Source or Free. You cannot modify or redistribute this code without explicit permission from the copyright holder.
+
+
 ## Build Setup
 
 ```bash
@@ -34,3 +43,15 @@ Details of the form fields required and any validation rules are provided below,
 | About you | about_you | string | :white_check_mark: |
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## Screenshots
+
+![screenshot-1.png](https://github.com/alexpilugin/ap-netsells-tech-task-vue-nuxt/blob/main/screenshots/sc-1.png "screenshot-1.png") 
+
+![screenshot-2.png](https://github.com/alexpilugin/ap-netsells-tech-task-vue-nuxt/blob/main/screenshots/sc-2.png "screenshot-2.png") 
+
+![screenshot-3.png](https://github.com/alexpilugin/ap-netsells-tech-task-vue-nuxt/blob/main/screenshots/sc-3.png "screenshot-3.png") 
+
+![screenshot-4.png](https://github.com/alexpilugin/ap-netsells-tech-task-vue-nuxt/blob/main/screenshots/sc-4.png "screenshot-4.png") 
+
+
