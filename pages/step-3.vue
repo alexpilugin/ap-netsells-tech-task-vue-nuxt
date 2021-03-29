@@ -120,12 +120,12 @@ export default {
   },
   head() {
     return {
-      title: 'Step One',
+      title: 'Step Three',
       meta: [
         {
-          hid: 'Netsells: Step One',
-          name: 'Step One',
-          content: 'Step One - Netsells',
+          hid: 'Netsells: Step Three',
+          name: 'Step Three',
+          content: 'Step Three - Netsells',
         },
       ],
     }
